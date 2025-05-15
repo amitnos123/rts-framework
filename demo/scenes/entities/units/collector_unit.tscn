@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://c00djgaj13qj"]
+
+[ext_resource type="PackedScene" uid="uid://cdhy5hf5mew1v" path="res://demo/scenes/entities/units/base_unit.tscn" id="1_1w2ng"]
+[ext_resource type="Script" uid="uid://bjgx16epual30" path="res://demo/scenes/entities/units/collector_unit.gd" id="2_bttoe"]
+[ext_resource type="Script" uid="uid://car3nqmm8wgtd" path="res://demo/scenes/entities/units/states/idle.gd" id="3_wogyx"]
+[ext_resource type="Script" uid="uid://b5q8idnvemajb" path="res://demo/scenes/entities/units/states/move.gd" id="4_xlfq6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wogyx"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xlfq6"]
+
+[node name="CollectorUnit" instance=ExtResource("1_1w2ng")]
+script = ExtResource("2_bttoe")
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_wogyx")
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("CylinderMesh_xlfq6")
+
+[node name="Idle" type="Node" parent="StateMachine" index="0"]
+script = ExtResource("3_wogyx")
+metadata/_custom_type_script = "uid://b1pomnybg82gw"
+
+[node name="Move" type="Node" parent="StateMachine" index="1"]
+script = ExtResource("4_xlfq6")
+metadata/_custom_type_script = "uid://b1pomnybg82gw"

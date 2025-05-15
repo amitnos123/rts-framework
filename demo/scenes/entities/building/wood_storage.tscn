@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnb2rf5du4s2v"]
+
+[ext_resource type="Script" uid="uid://dhh61dufqow8r" path="res://demo/scenes/entities/building/wood_storage.gd" id="1_jvvsd"]
+[ext_resource type="Script" uid="uid://cpq8txagk4am4" path="res://addons/rts_framework/features/resource/collectable_component.gd" id="2_nnbpe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvvsd"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jvvsd"]
+material = SubResource("StandardMaterial3D_jvvsd")
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nnbpe"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nnbpe"]
+material = SubResource("StandardMaterial3D_nnbpe")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="WoodStorage" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+script = ExtResource("1_jvvsd")
+
+[node name="storage" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jvvsd")
+
+[node name="deposit_point" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2)
+mesh = SubResource("BoxMesh_nnbpe")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="CollectableComponent" type="Node" parent="Components"]
+script = ExtResource("2_nnbpe")

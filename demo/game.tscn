@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c4by2q2g1r3em"]
+[gd_scene load_steps=21 format=3 uid="uid://c4by2q2g1r3em"]
 
 [ext_resource type="Texture2D" uid="uid://cj6w0rv0tko5d" path="res://demo/assets/textures/green.png" id="1_0crr1"]
 [ext_resource type="Script" uid="uid://cuyhslhlbyrr2" path="res://demo/scripts/rts_controller.gd" id="2_yunhj"]
@@ -6,9 +6,12 @@
 [ext_resource type="Script" uid="uid://br1ku01xq7e3f" path="res://addons/rts_framework/features/selection/selection_manager.gd" id="3_psg5c"]
 [ext_resource type="Material" uid="uid://beikxwyxmudot" path="res://demo/materials/team_1.tres" id="4_6ku06"]
 [ext_resource type="Script" uid="uid://bslb23mpg0llo" path="res://addons/rts_framework/features/command/command_manager.gd" id="4_lcg0b"]
+[ext_resource type="PackedScene" uid="uid://dnb2rf5du4s2v" path="res://demo/scenes/entities/building/wood_storage.tscn" id="5_fqft5"]
 [ext_resource type="PackedScene" uid="uid://bdjx0t2xkn5gg" path="res://addons/rts_framework/features/camera/camera_controller.tscn" id="6_3gdxu"]
+[ext_resource type="PackedScene" uid="uid://c00djgaj13qj" path="res://demo/scenes/entities/units/collector_unit.tscn" id="6_ri1tv"]
 [ext_resource type="PackedScene" uid="uid://ctoeptkckw6xq" path="res://addons/rts_framework/features/selection/selection_box.tscn" id="6_x1kyj"]
 [ext_resource type="PackedScene" uid="uid://d1t1ag5bk5u53" path="res://demo/scenes/entities/units/soldier.tscn" id="7_p3hpf"]
+[ext_resource type="PackedScene" uid="uid://4rq3nu3doq5p" path="res://demo/scenes/entities/resources/wood.tscn" id="7_ri1tv"]
 [ext_resource type="PackedScene" uid="uid://71g6dowvqb5i" path="res://addons/rts_framework/features/vision/fog_of_war_manager.tscn" id="8_12bj3"]
 [ext_resource type="PackedScene" uid="uid://bo2b1x0u1j1dg" path="res://addons/rts_framework/features/vision/minimap.tscn" id="11_hn7rm"]
 
@@ -61,16 +64,29 @@ shape = SubResource("BoxShape3D_m28nb")
 
 [node name="Soldier" parent="Entities" instance=ExtResource("7_p3hpf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.92926, 0.211501, 6.07202)
+visible = true
 material = ExtResource("3_1d533")
 
 [node name="Soldier2" parent="Entities" instance=ExtResource("7_p3hpf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.94615, 0.211501, 6.07202)
+visible = true
 material = ExtResource("4_6ku06")
 team = 1
 
 [node name="Soldier3" parent="Entities" groups=["revealed_units"] instance=ExtResource("7_p3hpf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5574, 0.211501, 6.07202)
+visible = true
 material = ExtResource("3_1d533")
+
+[node name="WoodStorage" parent="Entities" instance=ExtResource("5_fqft5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3794, 0.05, 20.0622)
+
+[node name="CollectorUnit" parent="Entities" instance=ExtResource("6_ri1tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3788, 0.005, 17.3316)
+
+[node name="Wood" parent="Entities" instance=ExtResource("7_ri1tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.47, 1, 16.9606)
+resource_type = "default"
 
 [node name="RTSController" type="Node" parent="."]
 script = ExtResource("2_yunhj")
